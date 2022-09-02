@@ -37,7 +37,54 @@ public class StudentService {
     }
 
 
+    public static Set<String> getAllStudentNameInSorted(Set<Student> studentSet){
+        //Create a TreeSet object
+        TreeSet<String> studentTreeSet = new TreeSet<>();
 
+        //Use Iterator object of type <Student> to iterate through the studentSet
+        Iterator<Student> iterator = studentSet.iterator();
+        while (iterator.hasNext()){
+         Student element = iterator.next();
+
+           String name = element.getName();
+           studentTreeSet.add(name);
+        }
+
+        //get all the name and add it inside the TreeSet object
+
+      //return the TreeSet object;
+        return studentTreeSet;
+    }
+
+    public static Map<String,Integer> calculateAverage(Set<Student> studentSet){
+        //create a HashMap object of type <String,Integer>
+        HashMap<String,Integer> studentHashMap = new HashMap<>();
+
+
+        //Use Iterator object of type <Student>to iterate through the studentSet
+        Iterator<Student> iterator = studentSet.iterator();
+
+        //retrieve the Student object from the iterator
+        while (iterator.hasNext()){
+           Student element = iterator.next();
+
+             studentHashMap.put(element.getName(),element.getTotalMarks()/studentSet.size() );
+        }
+
+        //Use getter method to get TotalMarks of each student. calculate the average
+
+        //add the student name and average marks in the HashMap object created in the
+        //first line and return the map
+
+           return studentHashMap;
+
+    }
+
+    public static void main(String[] args) {
+        Set studentName = getAllStudentData();
+        System.out.println(getAllStudentNameInSorted(studentName));
+        System.out.println(calculateAverage(studentName));
+    }
 
 
 }
